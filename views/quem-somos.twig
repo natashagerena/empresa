@@ -1,0 +1,36 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="about">
+	    <div class="about-header">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="header-content">
+	                    <div class="title">
+	                        {% if fn('get_locale') == 'en_US' %}
+	                        	<h1>Who we are</h1>
+	                        {% else %}
+	                        	<h1>Quem somos</h1>
+	                        {% endif %}
+	                    </div>
+	                    <div class="banner">
+	                        <img src="{{ Image(post.imagem) }}" class="img-fluid" alt="Quem somos">
+	                    </div>
+	                </div>                    
+	            </div>
+	        </div>
+	    </div>
+	    <div class="about-content">
+	        <div class="container">
+	            <div class="box">
+	                <div class="about-description">
+	                    <img src="{{ Image(post.imagem_quem_somos) }}" class="img-fluid" alt="Quem somos">
+
+	                    {{ post.get_field('texto_quem_somos') }}
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

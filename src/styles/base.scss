@@ -1,0 +1,423 @@
+/* Novo layout produtos */
+.products {
+    .products-header .box .header-content {
+        padding: 22px 0;
+        height: 265px;
+
+        .title h1 {
+            line-height: 0.8;
+        }
+    }
+
+    .products-wrapper-header {
+        position: relative;
+
+        .imagem {
+            position: relative;
+            width: 100%;
+            height: 510px;
+            padding: 20px 5px;
+
+            &:before {
+                content: '';
+                display: block;
+                width: 94%;
+                height: 100%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                background: #fdb713;
+                background: linear-gradient(45deg, #fdb713 0%, #ffda20 100%);
+                clip-path: polygon(0 0, 100% 0, 66% 100%, 0 100%);
+            }
+
+            img {
+                mask-image: url(../images/mask.png);
+                mask-repeat: no-repeat;
+                max-width: calc(100% - 15px );
+                margin-left: 15px;
+                height: auto;
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% auto;
+                mask-size: 100% auto;
+            }
+        }
+
+        .conteudo {
+            position: absolute;
+            // top: 280px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            min-height: 230px;
+
+            .logo-img {
+                display: block;
+                position: relative;
+                width: 80%;
+                margin: 0 0 20px auto;
+            }
+
+            .subtitulo {
+                max-width: 200px;
+                margin-left: 90px;
+                font-size: 22px;
+                color: #3b4545;
+                font-weight: 600;
+                text-transform: uppercase;
+                line-height: 1.1;
+            }
+        }
+    }
+
+    .products-wrapper {
+        .products-bg {
+            .products-content {
+                padding: 0;
+
+                .info {
+                    .info-header{
+                        align-items: flex-end;
+                        
+                        &.characteristics {
+                            h3 {
+                                margin-top: 0;
+                            }
+                        }
+
+                        .img-icon {
+                            z-index: 1;
+                            width: 70px;
+                            height: 70px;
+                            padding: 14px;
+                            border-radius: 50%;
+                            background-color: #fff;
+                            margin-top: -20px;
+                        }
+
+                        h3 {
+                            display: inline-block;
+                            color: #fff;
+                            background-color: #34443f;
+                            padding: 5px 10px 5px 40px;
+                            margin-left: -20px;
+                            margin-bottom: 3px;
+                            border-radius: 0 10px 10px 0;
+                            font-weight: 600;
+
+                            small {
+                                display: block;
+                            }
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
+                    
+                    .characteristics {
+                        .col-md-6 {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        .item {
+                            display: block;
+                            border: 2px solid #ffd036;
+                            margin-bottom: 0;
+
+                            .title {
+                                display: block;
+                                float: none;
+                                width: auto;
+                                background-color: #ffd036;
+                                text-align: left;
+                            }
+
+                            .description {
+                                display: block;
+                                float: none;
+                                width: auto;
+                                background-color: #fff;
+                                padding: 10px;
+                            }
+                        }
+                    }
+
+                    .map-image {
+                        margin-left: 0;
+                        margin-top: 0;
+                        position: static;
+                        text-align: center;
+                    }
+
+                    .map-legend {
+                        display: none;
+                        margin-top: 0;
+
+                        .box-legend {
+                            .info-text {
+                                height: 30px;
+                                line-height: 30px;
+
+                                span {
+                                    font-size: 13px;
+                                    line-height: 1;
+                                }
+                            }
+
+                            .info-icon {
+                                .icon-classific {
+                                    width: 30px;
+                                    transform: rotate(180deg);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .box {
+            padding-right: 0;
+        }
+    }
+
+    &._archive {
+        background-color: #e7e9e8;
+
+        .topo {
+            position: relative;
+            z-index: 2;
+            min-height: 570px;
+            padding: 100px 0 100px;
+            margin-bottom: -200px;
+            background-image: url(../images/topo-produtos.png);
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: center top;
+
+            .titulo {
+                color: #3b4545;
+                font-size: 40px;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 40px;
+            }
+
+            .texto {
+                width: calc(100% - 250px);
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        .itens {
+            .container {
+                background-color: #fff;
+                padding: 60px;
+            }
+
+            .box3d {
+                margin-bottom: 40px;
+                transition: all .5s ease-in-out;
+                transform-style: preserve-3d;
+
+
+                .imagem {
+                    padding: 15px 20px 15px 0;
+                    background-image: url(../images/base-produtos.png);
+                    background-repeat: no-repeat;
+                    background-size: auto 100px;
+                    background-position: right top;
+                    transition: all .5s ease-in-out;
+                }
+
+                .texto {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 80%;
+                    height: 100%;
+                    padding: 15px 20px 15px 15px;
+                    margin: 0;
+                    color: #fff;
+                    font-size: 16px;
+                    opacity: 0;
+                    transform: rotate3d(0, 1, 0, -180deg);
+                    transition: all .5s ease-in-out;
+                    background-image: url(../images/base-produtos.png);
+                    background-repeat: no-repeat;
+                    background-size: auto 100px;
+                    background-position: right top;
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: 75px;
+                        right: 15%;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 8px 0 8px 10px;
+                        border-color: transparent transparent transparent #ffffff;
+
+                    }
+                }
+            }
+            
+            a {
+                display: block;
+                position: relative;
+                z-index: 3;
+                text-decoration: none;
+
+                &:hover .box3d {
+                    transform: rotate3d(0, 1, 0, -180deg);
+
+                    .imagem {
+                        opacity: 0;
+                    }
+
+                    .texto {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shu-511sg, .shu-708sg, .shu-615sg {
+    .products {
+        .products-header .box .header-content {
+            background-color: #6d3e24;
+        }
+
+        .products-wrapper-header {
+            .imagem:before {
+                background: #995e40;
+                background: linear-gradient(45deg, #6d3d23 0%, #995e40 100%);
+            }
+
+            .conteudo .subtitulo {
+                color: #fff;
+            }
+        }
+
+        .products-wrapper {
+            background-color: #6d3e24;
+
+            .products-bg .products-content {
+                .info {
+                    .info-header{
+                        .a {
+                            fill: rgb(154,95,65);
+                        }
+                    }
+
+                    .characteristics .item {
+                        border-color: #995f41;
+
+                        .title {
+                            background-color: #9A5F41;
+                            color: #fff;
+                        }
+                        .description {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 1199px) {
+    .products {
+        .products-wrapper-header {
+            .imagem {
+                padding: 50px 50px 50px 0;
+                clip-path: polygon(0 0, 100% 0, 400px 100%, 0 100%);
+            }
+
+            .conteudo {
+                .info {
+                    margin-left: -35px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .products {
+        .products-header .box .header-content {
+            padding: 15px 5px;
+            height: auto;
+        }
+
+        .products-wrapper-header {
+            top: 0;
+            margin-left: 0;
+
+            .imagem {
+                display: none;
+            }
+
+            .conteudo {
+                position: relative;
+                top: 0;
+                width: 100%;
+                margin-left: 0;
+
+                .logo-img {
+                    left: 0;
+                    display: block;
+                    width: 90%;
+                    margin: 20px auto 0;
+                    max-width: 500px;
+                }
+
+                .subtitulo {
+                    margin: 40px auto 0;
+                    max-width: 65%;
+                    text-align: center;
+                }
+
+                .info {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .products-wrapper {
+            .products-bg {
+                .products-content {
+                    padding: 7px;
+                }
+            }
+        }
+
+        &._archive {
+            .topo {
+                min-height: auto;
+                padding: 20px 0 50px;
+                background-image: url(../images/topo-produtos-mobile.png);
+                background-position: right center;
+                margin-bottom: 20px;
+
+                .titulo {
+                    margin-bottom: 60px;
+                }
+
+                .texto {
+                    width: calc(100% - 100px);
+                }
+            }
+        }
+    }
+}

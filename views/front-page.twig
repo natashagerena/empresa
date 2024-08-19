@@ -1,0 +1,412 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="home">
+	    <div id="banner-wrapper">
+	        <div id="banners" class="owl-carousel owl-theme">
+	            {% for item in post.get_field('banners') %}
+	            <div class="box-item">
+	                {% if item.link %}
+	                <a href="{{ banner.link }}">
+	                {% endif %}
+	                <img src="{{ Image(item.imagem) }}" class="img-fluid">
+	                {% if item.link %}
+	                </a>
+	                {% endif %}
+	            </div>
+	            {% endfor %}
+	        </div>
+	    </div>
+
+	    <!-- About -->
+	    <section class="about-wrapper">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="about-content">
+	                    <div class="row">
+	                        <div class="col-md-5">
+	                            <div class="logo-3d">
+	                                <img src="{{ Image(post.imagem_sobre) }}" class="img-fluid" alt="empresa1 Seeds">
+	                            </div>
+	                        </div>
+	                        <div class="col-md-7">
+	                            <p>{{ post.texto_sobre }}</p>
+
+	                            {% if fn('get_locale') == 'en_US' %}
+	                            	<a href="{{ site.url }}/quem-somos" class="btn btn-custom">Who we are</a>
+	                            {% else %}
+	                            	<a href="{{ site.url }}/quem-somos" class="btn btn-custom">Quem somos</a>
+	                            {% endif %}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- Images -->
+	    <section class="images-wrapper">
+	        <div class="container">
+	            <div class="box">
+	                <div class="row">
+	                	{% for item in post.get_field('imagens_home') %}
+		                    <div class="col">
+		                        <figure>
+		                            <img src="{{ Image(item.imagem) }}" class="img-fluid">
+		                        </figure>
+		                    </div>
+	                	{% endfor %}
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- Products -->
+	    <section class="products-wrapper" style="background-image: url({{ Image(post.imagem_prod) }})">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="box-title">
+	                    	{% if fn('get_locale') == 'en_US' %}
+	                    		<h2><span>Products</span></h2>
+	                    	{% else %}
+	                    		<h2><span>Produtos</span></h2>
+	                    	{% endif %}
+	                    </div>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="products-list owl-carousel owl-theme">
+	                        {% for product in produtos %}
+	                        <div class="item">
+	                            <div class="item-content">
+	                                <span class="type">{{ product.rotulo_produto }}</span>
+	                                <img src="{{ Image(product.imagem_nome_produto) }}" class="img-logo primary" alt="{{ product.title }}">
+	                                <img src="{{ Image(product.imagem_nome_ativo_produto) }}" class="img-logo active" alt="{{ product.title }}">
+	                                <a href="{{ product.link }}"><img src="{{ Image(product.imagem_home_produto) }}" class="img-fluid" alt="{{ product.title }}"></a>
+	                                <a href="{{ product.link }}" class="btn btn-more">
+	                                    {% if fn('get_locale') == 'en_US' %}
+	                                    	<span class="text">Know more</span>
+	                                    {% else %}
+	                                    	<span class="text">Saiba mais</span>
+	                                    {% endif %}
+	                                    
+	                                    <span class="icon">
+	                                        <i class="fas fa-play"></i>
+	                                    </span>
+	                                </a>
+	                            </div>
+	                            <div class="item-box">
+	                            </div>
+	                        </div>
+	                        {% endfor %}
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- Technology -->
+	    <section class="technology-wrapper">
+	        <div class="row no-gutters">
+	            <div class="col-md-7">
+	                {% if fn('get_locale') == 'en_US' %}
+	                	<h2><span data-aos="fade-up" data-aos-duration="2500" data-aos-offset="500">Technologies</span></h2>
+	                {% else %}
+	                	<h2><span data-aos="fade-up" data-aos-duration="2500" data-aos-offset="500">Tecnologias</span></h2>
+	                {% endif %}
+	                
+	                <div class="box">
+	                    <p><span>{{ post.texto_tec }}</span></p>
+
+	                    {% if fn('get_locale') == 'en_US' %}
+	                    	<a href="{{ site.url }}/tecnologias" class="btn btn-custom">Know more</a>
+	                    {% else %}
+	                    	<a href="{{ site.url }}/tecnologias" class="btn btn-custom">Saiba mais</a>
+	                    {% endif %}
+	                </div>
+	            </div>
+	            <div class="col-md-5">
+	                <figure>
+	                    <img src="{{ Image(post.imagem_tec) }}" class="img-fluid">
+	                </figure>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- Downloads -->
+	    {##<section class="downloads-wrapper">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="box">
+	                        <div class="box-border-top d-none d-sm-block"></div>
+	                        <div class="box-border-right d-none d-sm-block"></div>
+	                        <div class="box-border-bottom d-none d-sm-block"></div>
+	                        <div class="box-border-left d-none d-sm-block"></div>
+	                        <div class="box-border-bottom-form d-none d-sm-block"></div>
+
+	                        <h2><span>Downloads</span></h2>
+
+	                        <div class="box-content">
+	                            <h4>Baixe aqui o nosso material técnico.</h4>
+	                            <figure class="d-none d-sm-block">
+	                                <a href="downloads"><img src="assets/images/downloads-home.png" class="img-fluid" alt=""></a>
+	                            </figure>
+	                            <figure class="d-block d-sm-none">
+	                            <a href="downloads"><img src="assets/images/downloads-home-xs.png" class="img-fluid" alt=""></a>
+	                            </figure>
+	                            
+	                            <span><a href="downloads">Impressos</a></span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>##}
+
+	    <!-- News -->
+	    {# {% if posts.num_rows() > 2 %}
+	    <section class="news-wrapper">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="box-title">
+	                        <h2><span>Notícias</span></h2>
+	                        <a href="noticias" class="btn more">Ler todas</a>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="news-list owl-carousel owl-theme">
+	                        {% for post in posts.result() %}
+	                        <div class="item">
+	                            <div class="item-content">
+	                                <span class="type">{{ post.subtitle }}</span>
+	                                <h3>{{ post.subtitle }}</h3>
+	                                <a href="noticias/{{ post.slug }}"><img src="assets/images/news-home-thumb.jpg" class="img-fluid" alt=""></a>
+	                                <a href="noticias/{{ post.slug }}" class="btn btn-more">
+	                                    <span class="text">Ver mais</span>
+	                                    <span class="icon">
+	                                        <img src="assets/images/lupa.png" alt="">
+	                                    </span>
+	                                </a>
+	                            </div>
+	                            <div class="item-box">
+	                            </div>
+	                        </div>
+	                        {% endfor %}
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    {% endif %} #}
+
+	    <!-- Events -->
+	    <section class="events-wrapper">
+	        <div class="content">
+	            <div class="row no-gutters">
+	                <div class="col-md-5">
+	                	{% if fn('get_locale') == 'en_US' %}
+	                		<h2>Events</h2>
+	                	{% else %}
+	                		<h2>Eventos</h2>
+	                	{% endif %}
+
+	                    <div class="box">
+	                        <div class="box-border-top d-none d-sm-block"></div>
+	                        <div class="box-border-right d-none d-sm-block"></div>
+	                        <div class="box-border-bottom d-none d-sm-block"></div>
+	                        <div class="box-border-left d-none d-sm-block"></div>
+
+	                        {# <figure class="d-block d-sm-none">
+	                            <img src="assets/images/events-home-xs.jpg" class="img-fluid" alt="Eventos">
+	                        </figure> #}
+
+	                        <h4>{{ post.texto_eventos }}</h4>
+	                        <img src="{{ theme.link }}/assets/images/icon-events.png" class="img-fluid icon-event">
+	                        
+	                        {% if fn('get_locale') == 'en_US' %}
+	                        	<a href="{{ site.url }}/eventos" class="btn btn-orange">Click here</a>
+	                        {% else %}
+	                        	<a href="{{ site.url }}/eventos" class="btn btn-orange">Clique aqui</a>
+	                        {% endif %}
+	                    </div>
+	                </div>
+	                <div class="col-md-7">
+	                    <figure class="d-none d-sm-block">
+	                        <img src="{{ Image(post.imagem_eventos) }}" class="img-fluid" alt="Eventos">
+	                    </figure>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- Contact -->
+	    {% if fn('get_locale') == 'en_US' %}
+	    	<section id="contato" class="contact-wrapper">
+	    	    <div class="container">
+	    	        <div class="row">
+	    	            <div class="col-md-12">
+	    	                <div class="box-title">
+	    	                    <h2>Contact</h2>
+	    	                    <h4>Fill in the fields below and wait for one of our representatives to contact you.</h4>
+	    	                </div>
+	    	            </div>
+	    	        </div>
+
+	    	        <div class="row">
+	    	            <div class="col-md-12">
+	    	                <form id="form_contato" method="POST" action="{{ site.url }}/#form_contato">
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-12">
+	    	                            <label class="sr-only" for="name">Name</label>
+	    	                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Full name:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-6">
+	    	                            <label class="sr-only" for="email">E-mail</label>
+	    	                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail:" required>
+	    	                        </div>
+
+	    	                        <div class="form-group col-md-6">
+	    	                            <label class="sr-only" for="phone">Phone</label>
+	    	                            <input type="tel" class="form-control mask_phone" id="telefone" name="telefone" placeholder="Phone:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-7">
+	    	                            <label class="sr-only" for="city">City</label>
+	    	                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="City:" required>
+	    	                        </div>
+
+	    	                        <div class="form-group col-md-5">
+	    	                            <label class="sr-only" for="state">State</label>
+	    	                            <input type="text" class="form-control" id="estado" name="estado" placeholder="State:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-12">
+	    	                            <label class="sr-only" for="message">Message</label>
+	    	                            <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Message:*" rows="4" required></textarea>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="checkbox">
+	    	                            <label>
+	    	                                <input type="checkbox" name="notification" id="notification" value="Sim">
+	    	                                <span class="box"></span>
+	    	                                I accept to receive communications from empresa1 Seeds
+	    	                                <p>I would like to receive communications of products and/or promotions by E-mail, SMS, telephone or postal mail.</p>
+	    	                            </label>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="response"></div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="col-md-12 text-center mt-3 mb-3">
+	    	                            <button type="submit" class="btn btn-custom">Send</button>
+	    	                        </div>								
+	    	                    </div>
+
+	    	                    <input type="hidden" name="form_action" value="form_contato">
+	    	                </form>
+	    	            </div>
+	    	        </div>
+	    	    </div>
+	    	</section>
+	    {% else %}
+	    	<section id="contato" class="contact-wrapper">
+	    	    <div class="container">
+	    	        <div class="row">
+	    	            <div class="col-md-12">
+	    	                <div class="box-title">
+	    	                    <h2>Contato</h2>
+	    	                    <h4>Preencha os campos abaixo e aguarde o contato de um de nossos representantes.</h4>
+	    	                </div>
+	    	            </div>
+	    	        </div>
+
+	    	        <div class="row">
+	    	            <div class="col-md-12">
+	    	                <form id="form_contato" method="POST" action="{{ site.url }}/#form_contato">
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-12">
+	    	                            <label class="sr-only" for="name">Nome</label>
+	    	                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-6">
+	    	                            <label class="sr-only" for="email">E-mail</label>
+	    	                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail:" required>
+	    	                        </div>
+
+	    	                        <div class="form-group col-md-6">
+	    	                            <label class="sr-only" for="phone">Telefone</label>
+	    	                            <input type="tel" class="form-control mask_phone" id="telefone" name="telefone" placeholder="Telefone:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-7">
+	    	                            <label class="sr-only" for="city">Cidade</label>
+	    	                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade:" required>
+	    	                        </div>
+
+	    	                        <div class="form-group col-md-5">
+	    	                            <label class="sr-only" for="state">Estado</label>
+	    	                            <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado:" required>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="form-group col-md-12">
+	    	                            <label class="sr-only" for="message">Mensagem</label>
+	    	                            <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Mensagem:*" rows="4" required></textarea>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="checkbox">
+	    	                            <label>
+	    	                                <input type="checkbox" name="notification" id="notification" value="Sim">
+	    	                                <span class="box"></span>
+	    	                                Aceito receber comunicações da empresa1 Seeds
+	    	                                <p>Gostaria de receber comunicações de produtos e/ou promoções por E-mail, SMS, telefone ou correio postal.</p>
+	    	                            </label>
+	    	                        </div>
+	    	                    </div>
+
+	    	                    <div class="response"></div>
+
+	    	                    <div class="form-row">
+	    	                        <div class="col-md-12 text-center mt-3 mb-3">
+	    	                            <button type="submit" class="btn btn-custom">Enviar</button>
+	    	                        </div>								
+	    	                    </div>
+
+	    	                    <input type="hidden" name="form_action" value="form_contato">
+	    	                </form>
+	    	            </div>
+	    	        </div>
+	    	    </div>
+	    	</section>
+	    {% endif %}
+	</div>
+{% endblock %}

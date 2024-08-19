@@ -1,0 +1,54 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="technology">
+	    <div class="technology-header">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="header-content">
+	                    <div class="title">
+	                    	{% if fn('get_locale') == 'en_US' %}
+	                    		<h1>Technology</h1>
+	                    	{% else %}
+	                    		<h1>Tecnologia</h1>
+	                    	{% endif %}
+	                    </div>
+	                    <div class="banner">
+	                        <img src="{{ Image(post.imagem) }}" class="img-fluid" alt="Tecnologia">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="about-content">
+	        <div class="container">
+	            <div class="box">
+	                <div class="about-description">
+	                    <div class="box-images">
+	                        <figure>
+	                            <img src="{{ Image(post.imagem_tec_1) }}" class="img-fluid" alt="Imagem tecnologia">
+	                        </figure>
+
+	                        <figure>
+	                            <img src="{{ Image(post.imagem_tec_2) }}" class="img-fluid" alt="Imagem tecnologia">
+	                        </figure>
+	                    </div>
+
+	                    <div>
+		                    <strong>{{ post.titulo_tec_1 }}</strong>  
+		                    <div class="texto">{{ post.get_field('texto_tec_1') }}</div>
+		                    <strong>{{ post.titulo_tec_2 }}</strong>  
+		                    <div class="texto">{{ post.get_field('texto_tec_2') }}</div>     
+	                    </div>
+
+	                    <div class="logos">
+	                    	<img src="{{ Image(post.logo_tec_1) }}" style="width: 298.5px; height: 70.6094px;">&nbsp; &nbsp; &nbsp;
+	                    	<img src="{{ Image(post.logo_tec_2) }}" style="width: 148.344px; height: 126.109px;">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

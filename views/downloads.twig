@@ -1,0 +1,50 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="downloads page">
+	    <div class="downloads-header">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="header-content">
+	                    <div class="title">
+	                        <h1>{{ post.title }}</h1>
+	                    </div>
+	                    <div class="banner">
+	                        <img src="{{ Image(post.imagem) }}" class="img-fluid" alt="{{ post.title }}">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="downloads-wrapper">
+	        <div class="container">
+	            <div class="box">
+	                <div class="downloads-content-bg">
+	                    <div class="downloads-content">
+	                        <div class="row">
+	                            <div class="col-md-12">
+	                                <h3>Aqui você encontra nosso material técnico para download:</h3>
+
+	                                <div class="box-info">
+	                                    <div class="image">
+	                                        <img src="{{ Image(post.imagem_arquivo) }}" class="img-fluid" alt="Imagem arquivo">
+	                                    </div>
+	                                    
+	                                    <div class="cta">
+	                                        <span class="title">
+												{{ post.titulo_arquivo }}
+	                                        </span>
+
+	                                        <a href="{{ post.get_field('arquivo').url }}" class="btn btn-orange" target="_blank"><i class="fas fa-arrow-down"></i> Baixe aqui</a>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

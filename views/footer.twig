@@ -1,0 +1,116 @@
+    {% if fn('get_locale') == 'en_US' %}
+        <div class="Cookies">
+            <div class="information">
+                <span>We use cookies</span>
+                <p>This website uses cookies to improve your browsing experience.</p>
+            </div>
+            <div class="accept">
+                <a href="{{ site.url }}/politica-de-privacidade">Know more</a>
+                <a class="Button" class="button">Accept</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="Cookies">
+            <div class="information">
+                <span>Nós usamos cookies</span>
+                <p>Este site usa cookies para aprimorar sua experiência de navegação.</p>
+            </div>
+            <div class="accept">
+                <a href="{{ site.url }}/politica-de-privacidade">Saiba Mais</a>
+                <a class="Button" class="button">Aceito</a>
+            </div>
+        </div>
+    {% endif %}
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 head">
+                    <div class="logo">
+                        <figure>
+                            <img src="{{ option('logo_footer') }}" alt="empresa1 Seeds">
+                        </figure>
+                    </div>
+                    <div class="social">
+                        {% if fn('get_locale') == 'en_US' %}
+                            <h5>Connect with us</h5>
+                        {% else %}
+                            <h5>Conecte-se Conosco</h5>
+                        {% endif %}
+                        
+                        <ul class="list-inline">
+                            {% for item in option('redes_sociais') %}
+                                <li><a href="{{ item.link }}" target="_blank" title="{{ item.nome }}"><i class="icon-{{ item.nome }}"></i></a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="footer-links">
+                        {% if fn('get_locale') == 'en_US' %}
+                            <ul>
+                                <li><a href="{{ site.url }}/quem-somos">Who we are</a></li>
+                                <li class="nav-item dropdown {{ is_active('produtos') }}">
+                                    <a class="nav-link" href="#" id="navbarDropdownProduct" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products <i class="fas fa-caret-down"></i></a>
+
+                                    <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdownProduct">
+                                        {% for item in produtos %}
+                                            <a class="dropdown-item" href="{{ item.link }}">{{ item.title }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li><a href="{{ site.url }}/tecnologias">Technologies</a></li>
+                                <li><a href="{{ site.url }}/noticias">News</a></li>
+                                <li><a href="{{ site.url }}/galeria">Gallery</a></li>
+                                <li><a href="{{ site.url }}/downloads">Downloads</a></li>
+                                <li><a href="{{ site.url }}/eventos">Events</a></li>
+                                <li><a href="{{ site.url }}/#contato">Contacts</a></li>
+                            </ul>
+                            <a href="{{ site.url }}/politica-de-privacidade" class="link-info">Data protection and privacy</a>
+                        {% else %}
+                            <ul>
+                                <li><a href="{{ site.url }}/quem-somos">Quem somos</a></li>
+                                <li class="nav-item dropdown {{ is_active('produtos') }}">
+                                    <a class="nav-link" href="#" id="navbarDropdownProduct" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produtos <i class="fas fa-caret-down"></i></a>
+
+                                    <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdownProduct">
+                                        {% for item in produtos %}
+                                            <a class="dropdown-item" href="{{ item.link }}">{{ item.title }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li><a href="{{ site.url }}/tecnologias">Tecnologias</a></li>
+                                <li><a href="{{ site.url }}/noticias">Notícias</a></li>
+                                <li><a href="{{ site.url }}/galeria">Galeria</a></li>
+                                <li><a href="{{ site.url }}/downloads">Downloads</a></li>
+                                <li><a href="{{ site.url }}/eventos">Eventos</a></li>
+                                <li><a href="{{ site.url }}/#contato">Contatos</a></li>
+                            </ul>
+                            <a href="{{ site.url }}/politica-de-privacidade" class="link-info">Proteção e privacidade de dados</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+	<script src="{{ theme.link }}/assets/js/app.min.js?v=20220718"></script>
+
+    <script>
+        if (localStorage.hasOwnProperty('verify_cookies')) {
+            $('.Cookies').addClass('_hide');
+        }
+
+        $('.Cookies .Button').click(function(event) {
+            event.preventDefault();
+            localStorage.setItem('verify_cookies', true);
+            $('.Cookies').addClass('_hide');
+        });
+    </script>
+
+	{# inserindo script mapa #}
+	{{ fn('get_option_mapa') }}
+    
+	{{ wp_footer }}
+</body>
+</html>

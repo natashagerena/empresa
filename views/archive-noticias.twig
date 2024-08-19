@@ -1,0 +1,86 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+<div class="news">
+    <div class="container">
+        <div class="news-wrapper">
+            <div class="border-top-rotate d-none d-sm-block"></div>
+            <div class="border-right-start d-none d-sm-block"></div>
+            <div class="box">
+                <div class="title">
+                    {% if fn('get_locale') == 'en_US' %}
+                        <h1>Read more</h1>
+                    {% else %}
+                        <h1>Leia mais</h1>
+                    {% endif %}
+                </div>
+                <div class="content">
+                    {% for post in posts %}
+                        <article>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="image">
+                                        <div class="image-box">
+                                            <a href="{{ post.link }}"><img src="{{ Image(post.imagem) | resize(382, 255) }}" class="img-fluid" alt="{{ post.title }}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="info">
+                                        <h3>{{ post.title }}</h3>
+                                        <span class="date">{{ post.post_date | date('d/m/Y') }}</span>
+                                        <p>
+                                            {{ post.texto | excerpt(50) }}
+                                        </p>
+
+                                        {% if fn('get_locale') == 'en_US' %}
+                                           <a href="{{ post.link }}" class="btn">Read more</a>
+                                        {% else %}
+                                            <a href="{{ post.link }}" class="btn">Saiba mais</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                    
+                    {% if posts.pagination %}
+                        <div class="pages">
+                            <nav>
+                                <ul class="pagination">
+                                    {% if posts.pagination.prev %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ posts.pagination.prev.link }}">Anterior</a>
+                                        </li>
+                                    {% endif %}
+                                    
+                                    {% for page in posts.pagination.pages %}
+                                        {% if page.link %}
+                                            <li class="page-item"><a class="page-link" href="{{ page.link }}">{{ page.title }}</a></li>
+                                        {% else %}
+                                            <li class="page-item active"><a class="page-link" href="#">{{ page.title }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if posts.pagination.next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ posts.pagination.next.link }}">Próximo</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="news-bar">
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</div>
+{% endblock %}

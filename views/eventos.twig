@@ -1,0 +1,56 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+<div class="events">
+    <div class="technology-header">
+        <div class="container">
+            <div class="box">
+                <div class="border-top-rotate d-none d-sm-block"></div>
+                <div class="header-content">
+                    <div class="title">
+                        {% if fn('get_locale') == 'en_US' %}
+                            <h1>Events</h1>
+                        {% else %}
+                            <h1>Eventos</h1>
+                        {% endif %}
+                    </div>
+                    <div class="banner">
+                        <img src="{{ Image(post.imagem) }}" class="img-fluid" alt="{{ post.title }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="technology-wrapper">
+        <div class="container">
+            <div class="box">
+                <div class="technology-content-bg">
+                    <div class="technology-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if fn('get_locale') == 'en_US' %}
+                                    <h3>Events across Brazil with empresa1 Seeds:</h3>
+                                {% else %}
+                                    <h3>Eventos por todo o Brasil com a empresa1 Seeds:</h3>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="text">
+                                    {{ post.get_field('texto') }}
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="map d-none d-sm-block">
+                                    {% include "map-brazil.twig" %}
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" 			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" 	content="telephone=no">
+	<meta property="og:type"        content="website"/>
+	<meta property="og:title"       content="{{ wp_title ? wp_title ~ ' - ' }}{{ site.name }}"/>
+	<meta property="og:description" content="{% if post.get_field('meta_description') %}{{ post.get_field('meta_description') }}{% else %}{{ option('meta_description') }}{% endif %}" />
+	<meta property="og:image"       content="{% if post.get_field('imagem') %}{{ Image(post.get_field('imagem')) }}{% else %}{{ option('meta_imagem') }}{% endif %}" />
+	<meta name="description" 		content="{% if post.get_field('meta_description') %}{{ post.get_field('meta_description') }}{% else %}{{ option('meta_description') }}{% endif %}" />
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NK97MHM');</script>
+	<!-- End Google Tag Manager -->
+
+	{{ wp_head }}
+
+	<title>
+		{% if post.slug == 'quem-somos' or post.slug == 'tecnologias' %}
+			{{ post.title ? post.title ~ ' - ' }}{{ site.name }}
+		{% else %}
+			{{ wp_title ? wp_title ~ ' - ' }}{{ site.name }}
+		{% endif %}
+	</title>
+
+	<link rel="shortcut icon" href="{{ option('favicon') }}">
+
+	<style>
+		.wow {visibility: hidden;}
+	</style>
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	{# <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet"> #}
+	{# <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&display=swap" rel="stylesheet"> #}
+	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ theme.link }}/assets/css/app.css?v=20220718">
+</head>
+
+<body class="{{ get_page_class() }}{% if get_page_class() == 'produtos' %} {{post.slug}}{% endif %}">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK97MHM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<header class="Header" id="header-content">
+		<nav id="nav-header" class="navbar navbar-light bg-lignt navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand animated pulse logo" href="{{ site.url }}">
+					<img src="{{ option('logo') }}" class="img-fluid" alt="empresa1 Seeds">
+				</a>
+
+				<div class="collapse navbar-collapse navbarNav" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item {{ is_active('quem-somos') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/quem-somos">Who we are</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/quem-somos">Quem somos</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('produtos') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/produtos">Products</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/produtos">Produtos</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('tecnologias') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/tecnologias">Technologies</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/tecnologias">Tecnologias</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('noticias') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/noticias">News</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/noticias">Notícias</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('galeria') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/galeria">Gallery</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/galeria">Galeria</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('downloads') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/downloads">Downloads</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/downloads">Downloads</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('eventos') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/eventos">Events</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/eventos">Eventos</a>
+							{% endif %}
+						</li>
+						<li class="nav-item {{ is_active('contato') }}">
+							{% if fn('get_locale') == 'en_US' %}
+								<a class="nav-link" href="{{ site.url }}/#contato">Contacts</a>
+							{% else %}
+								<a class="nav-link" href="{{ site.url }}/#contato">Contatos</a>
+							{% endif %}
+						</li>
+					</ul>
+				</div>
+
+				<div class="langs">
+					{{ generateFlags() }}
+				</div>	
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div class="row">
+				<div class="line-header d-none d-sm-block">
+					<img src="{{ theme.link }}/assets/images/line-empresa1.png" class="img-fluid" alt="empresa1 line">
+				</div>
+			</div>
+		</div>
+	</header>

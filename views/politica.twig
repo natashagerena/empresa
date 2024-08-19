@@ -1,0 +1,34 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="policy">
+	    <div class="policy-header">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="header-content">
+	                    <div class="title">
+	                    	{% if fn('get_locale') == 'en_US' %}
+	                    	    <h1>Privacy policy</h1>
+	                    	{% else %}
+	                    	    <h1>Política de privacidade</h1>
+	                    	{% endif %}
+	                    </div>
+	                    <div class="banner">
+	                        <img src="{{ Image(post.imagem) }}" class="img-fluid" alt="Política de privacidade">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="policy-content">
+	        <div class="container">
+	            <div class="box">
+	                <div class="policy-description">
+	                    {{ post.get_field('texto') }}             
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

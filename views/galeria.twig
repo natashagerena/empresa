@@ -1,0 +1,53 @@
+{% extends 'base.twig' %}
+
+{% block conteudo %}
+	<div class="about">
+	    <div class="about-header">
+	        <div class="container">
+	            <div class="box">
+	                <div class="border-top-rotate d-none d-sm-block"></div>
+	                <div class="header-content">
+	                    <div class="title">
+	                    	{% if fn('get_locale') == 'en_US' %}
+	                    	    <h1>Gallery</h1>
+	                    	{% else %}
+	                    	    <h1>Galeria</h1>
+	                    	{% endif %}
+	                    </div>
+	                </div>                    
+	            </div>
+	        </div>
+	    </div>
+	    <div class="about-content galeria">
+	        <div class="container">
+	            <div class="box">
+	                <div class="about-description">
+	                	{% if fn('get_locale') == 'en_US' %}
+	                	    <h3>Video gallery</h3>
+	                	{% else %}
+	                	    <h3>Galeria de vídeos</h3>
+	                	{% endif %}
+	                	
+	            		<div class="owl-carousel owl-theme videos">
+	            		    {% for item in post.get_field('videos') %}
+	            		    	<div class="video">{{ fn('wp_oembed_get', item.link) }}</div>
+	            		    {% endfor %}
+	            		</div>
+
+	            		{% if fn('get_locale') == 'en_US' %}
+	            		    <h3>Image gallery</h3>
+	            		{% else %}
+	            		    <h3>Galeria de imagens</h3>
+	            		{% endif %}
+	            		
+	            		<div class="imagens" data-component="galeria">
+	            			{% for item in post.get_field('imagens') %}
+	            				<a href="{{ Image(item.imagem) }}" class="imagem" style="background-image: url({{ Image(item.imagem) | resize(230,180) }})"></a>
+	            			{% endfor %}
+	            		</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}
